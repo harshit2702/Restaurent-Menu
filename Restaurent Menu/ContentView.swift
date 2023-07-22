@@ -30,7 +30,7 @@ struct ContentView: View {
     let items: [item] = [
         item(name: "Masala Dosa", price: 180, type: "Main Course", link: "https://apollosugar.com/wp-content/uploads/2018/12/Masala-Dosa.jpg"),
         item(name: "Raj Kachori",price: 140,type: "Snack", link: "https://i.pinimg.com/originals/0a/af/c2/0aafc27b19f013d2d81e74a4a9a333ae.jpg"),
-        item(name: "Rasmalai 2Pcs", price: 119, type: "Sweet", link: "https://www.archanaskitchen.com/images/archanaskitchen/1-Author/moumita.malla-gmail.com/traditional_rasmalai_recipe.jpg"),
+        item(name: "Rasmalai 2Pcs", price: 119, type: "Sweet", link: "https://wwsadosaw.archanaskitchen.com/images/archanaskitchen/1-Author/moumita.malla-gmail.com/traditional_rasmalai_recipe.jpg"),
         item(name: "Chole Bhature", price: 170, type: "Main Course", link: "https://2.bp.blogspot.com/-OU_L_dlS_G0/Wx9rVpMKeVI/AAAAAAAAAEE/lL6pyCPBVoQkBxbpYZg9wRt6-Lce51C7ACLcBGAs/s1600/imperial%2Binn.jpg"),
         item(name: "Samosa", price: 24, type: "Snack", link: "http://www.zedamagazine.com/wp-content/uploads/2018/06/Indian-Food-Samosa-Dish-HD-Wallpapers.jpg"),
         item(name: "Jalebi In Ghee", price: 175, type: "Sweet", link: "https://www.dealsshutter.com/blog/wp-content/uploads/2021/01/2.jpg"),
@@ -51,12 +51,14 @@ struct ContentView: View {
             let groupedItems = Dictionary(grouping: items) { item in
                 item.type
             }
-            let sortedKeys = groupedItems.keys.sorted(by: <) // Sort the keys alphabetically
+            let sortedKeys = groupedItems.keys.sorted(by: >) // Sort the keys alphabetically
             return sortedKeys.map { key in
                 (type: key, items: groupedItems[key]!)
             }
         }
     
+    @State private var isPresented = false
+    @State private var selectedCard: item?
     
     var body: some View {
         NavigationStack{
@@ -100,6 +102,10 @@ struct ContentView: View {
                                     HStack{
                                         ForEach(section.items){item in
                                             CardView(name: item.name, price: item.price, link: item.link)
+                                                .onTapGesture {
+                                                    selectedCard = item
+                                                    isPresented = true
+                                                }
                                         }
                                     }
                                 }
@@ -113,6 +119,9 @@ struct ContentView: View {
             }
             .edgesIgnoringSafeArea(.top)
             .padding()
+            .sheet(isPresented: $isPresented){
+                sheetView(selectedCard: selectedCard)
+            }
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading){
                     VStack(alignment: .leading){
@@ -147,71 +156,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-}
-struct CardView: View {
-    @State var name = " Shahi paneer "
-    @State var price = 350
-    @State var link = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.K6_nKzXzZV83ODIuzt2wEQHaE8%26pid%3DApi&f=1&ipt=6808198a52610f94fea5fe50f9ca1dcb7222c21b177f2f736d76c0d2cbdb7e9a&ipo=images"
-        
-    var body: some View {
-        VStack{
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .frame(height: 175)
-                    .offset(y: 23)
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color(red: 250/255, green: 240/155, blue: 211/255))
-                    .frame(height: 170)
-                    .offset(y: 22)
-                VStack{
-                    Text(name)
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .frame(width: 140,height: 70)
-                    HStack{
-                        Spacer()
-                        Text("INR \(price)")
-                    }
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .offset(x:-10,y: 10)
-
-                    
-            
-                        
-                }
-                .offset(y: 45)
-
-                ZStack {
-                    AsyncImage(url: URL(string: link), scale: 3){image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .clipShape(Circle())
-                            .frame(width: 100,height: 100)
-                            .offset(y: -60)
-                    } placeholder: {
-                        ZStack{
-                            Circle()
-                                .fill(.gray)
-                                .frame(width: 45,height: 45)
-                            Circle()
-                                .fill(.white)
-                                .frame(width: 40,height: 40)
-                            Image(systemName: "fork.knife")
-                                .foregroundColor(.black)
-                                .font(.title2)
-                        }
-                        .offset(y: -60)
-                    }
-                }
-                
-            }
-            .frame(width: 150,height: 225)
-        }
-        .padding(.horizontal)
-        
     }
 }
 
