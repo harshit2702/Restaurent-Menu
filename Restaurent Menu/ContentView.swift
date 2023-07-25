@@ -57,7 +57,7 @@ struct ContentView: View {
             }
         }
     
-    @State var selectedCard: item?
+    //@State var selectedCard: item?
     
     var body: some View {
         NavigationStack{
@@ -88,8 +88,13 @@ struct ContentView: View {
                                                 RoundedRectangle(cornerRadius: 20)
                                                     .stroke(Color.black, lineWidth: 2)
                                             )
-                                        Text("Low Calorie")
-                                            .font(.callout)
+                                        NavigationLink{
+                                            Recommended_view(recommendationMetrics: "lowCalorie")
+                                        }
+                                        label:{
+                                            Text("Low Calorie")
+                                                .font(.callout)
+                                        }
                                     }
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: geo.size.width / 25)
@@ -100,8 +105,12 @@ struct ContentView: View {
                                                 RoundedRectangle(cornerRadius: 20)
                                                     .stroke(Color.black, lineWidth: 2)
                                             )
-                                        Text("Low Fats")
-                                            .font(.callout)
+                                        NavigationLink{
+                                            Recommended_view(recommendationMetrics: "lowFats")
+                                        }label:{
+                                            Text("Low Fats")
+                                                .font(.callout)
+                                        }
                                     }
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: 2 * geo.size.width / 25 + geo.size.width / 5)
@@ -112,8 +121,12 @@ struct ContentView: View {
                                                 RoundedRectangle(cornerRadius: 20)
                                                     .stroke(Color.black, lineWidth: 2)
                                             )
-                                        Text("Protein rich")
-                                            .font(.callout)
+                                        NavigationLink{
+                                            Recommended_view(recommendationMetrics: "highProtein")
+                                        }label:{
+                                            Text("Protein rich")
+                                                .font(.callout)
+                                        }
                                     }
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: 3 *  geo.size.width / 25 + 2 * geo.size.width / 5)
@@ -125,8 +138,12 @@ struct ContentView: View {
                                                 RoundedRectangle(cornerRadius: 20)
                                                     .stroke(Color.black, lineWidth: 2)
                                             )
-                                        Text("Fiberous")
-                                            .font(.callout)
+                                        NavigationLink{
+                                            Recommended_view(recommendationMetrics: "highFiber")
+                                        }label:{
+                                            Text("Fiberous")
+                                                .font(.callout)
+                                        }
                                     }
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: 4 * geo.size.width / 25 + 3 * geo.size.width / 5)

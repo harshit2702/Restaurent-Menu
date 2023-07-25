@@ -60,6 +60,7 @@ struct Recommended_view: View {
 
    @State private var sortedItemList = [item]()
     
+    
     func populateSortedItemList(for category: NutritionalCategory) {
         var count = 5
         for itemGroup in sortedItems(for: category) {
@@ -77,7 +78,11 @@ struct Recommended_view: View {
     var body: some View {
         ScrollView {
             ForEach(sortedItemList, id: \.name) { list in
-                CardView(name: list.name,price: list.price,link: list.link)
+                NavigationLink{
+                    sheetView(selectedCard: list)
+                }label: {
+                    CardView(name: list.name,price: list.price,link: list.link)
+                }
             }
         }
         .frame(maxWidth: .infinity)
