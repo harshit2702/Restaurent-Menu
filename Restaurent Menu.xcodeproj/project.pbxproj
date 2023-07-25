@@ -13,6 +13,9 @@
 		B1F0BA732A6A77EC00DB012F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F0BA722A6A77EC00DB012F /* Preview Assets.xcassets */; };
 		B1F0BA7B2A6BBF7C00DB012F /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F0BA7A2A6BBF7B00DB012F /* CardView.swift */; };
 		B1F0BA7D2A6BC03800DB012F /* sheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F0BA7C2A6BC03800DB012F /* sheetView.swift */; };
+		B1F0BA7F2A6BC43900DB012F /* NutritionInfo File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F0BA7E2A6BC43900DB012F /* NutritionInfo File.swift */; };
+		B1F0BA812A6C170100DB012F /* NutritionInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = B1F0BA792A6B2A6700DB012F /* NutritionInfo.json */; };
+		B1F0BA832A6C6DC500DB012F /* Recommended view.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F0BA822A6C6DC500DB012F /* Recommended view.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,9 +24,11 @@
 		B1F0BA6D2A6A77E800DB012F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B1F0BA6F2A6A77EC00DB012F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1F0BA722A6A77EC00DB012F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B1F0BA792A6B2A6700DB012F /* Nutrition value.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Nutrition value.geojson"; sourceTree = "<group>"; };
+		B1F0BA792A6B2A6700DB012F /* NutritionInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NutritionInfo.json; sourceTree = "<group>"; };
 		B1F0BA7A2A6BBF7B00DB012F /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B1F0BA7C2A6BC03800DB012F /* sheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sheetView.swift; sourceTree = "<group>"; };
+		B1F0BA7E2A6BC43900DB012F /* NutritionInfo File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NutritionInfo File.swift"; sourceTree = "<group>"; };
+		B1F0BA822A6C6DC500DB012F /* Recommended view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recommended view.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +64,10 @@
 				B1F0BA6B2A6A77E800DB012F /* Restaurent_MenuApp.swift */,
 				B1F0BA6D2A6A77E800DB012F /* ContentView.swift */,
 				B1F0BA7C2A6BC03800DB012F /* sheetView.swift */,
+				B1F0BA822A6C6DC500DB012F /* Recommended view.swift */,
+				B1F0BA7E2A6BC43900DB012F /* NutritionInfo File.swift */,
 				B1F0BA7A2A6BBF7B00DB012F /* CardView.swift */,
-				B1F0BA792A6B2A6700DB012F /* Nutrition value.geojson */,
+				B1F0BA792A6B2A6700DB012F /* NutritionInfo.json */,
 				B1F0BA6F2A6A77EC00DB012F /* Assets.xcassets */,
 				B1F0BA712A6A77EC00DB012F /* Preview Content */,
 			);
@@ -133,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F0BA812A6C170100DB012F /* NutritionInfo.json in Resources */,
 				B1F0BA732A6A77EC00DB012F /* Preview Assets.xcassets in Resources */,
 				B1F0BA702A6A77EC00DB012F /* Assets.xcassets in Resources */,
 			);
@@ -149,6 +157,8 @@
 				B1F0BA7B2A6BBF7C00DB012F /* CardView.swift in Sources */,
 				B1F0BA7D2A6BC03800DB012F /* sheetView.swift in Sources */,
 				B1F0BA6C2A6A77E800DB012F /* Restaurent_MenuApp.swift in Sources */,
+				B1F0BA7F2A6BC43900DB012F /* NutritionInfo File.swift in Sources */,
+				B1F0BA832A6C6DC500DB012F /* Recommended view.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

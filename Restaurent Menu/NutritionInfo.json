@@ -14,7 +14,7 @@
     "sugar_g": 0.2
   },
   {
-      "name": "jalebi",
+      "name": "jalebi in ghee",
       "calories": 278.9,
       "serving_size_g": 100,
       "fat_total_g": 6.4,
@@ -84,7 +84,7 @@
       "sugar_g": 3
     },
   {
-      "name": "Missi roti",
+      "name": "missi roti",
       "calories": 296.9,
       "serving_size_g": 100,
       "fat_total_g": 9,
@@ -98,7 +98,7 @@
       "sugar_g": 3
     },
   {
-      "name": "Butter roti",
+      "name": "butter roti",
       "calories": 296.9,
       "serving_size_g": 100,
       "fat_total_g": 9,
@@ -110,6 +110,20 @@
       "carbohydrates_total_g": 45.6,
       "fiber_g": 9.5,
       "sugar_g": 3
+    },
+  {
+      "name": "plain naan",
+      "calories": 313.7,
+      "serving_size_g": 100,
+      "fat_total_g": 11.1,
+      "fat_saturated_g": 5.1,
+      "protein_g": 9,
+      "sodium_mg": 478,
+      "potassium_mg": 94,
+      "cholesterol_mg": 15,
+      "carbohydrates_total_g": 46.6,
+      "fiber_g": 2,
+      "sugar_g": 3.3
     },
   {
       "name": "butter naan",
@@ -182,7 +196,7 @@
       "sugar_g": 0.2
   },
   {
-      "name": "rasmalai",
+      "name": "rasmalai 2pcs",
       "calories": 331.5,
       "serving_size_g": 100,
       "fat_total_g": 23.8,

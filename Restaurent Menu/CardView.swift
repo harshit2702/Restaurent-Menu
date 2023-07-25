@@ -68,6 +68,7 @@ struct CardView: View {
             }
             .frame(width: 150,height: 225)
         }
+        .foregroundColor(.black)
         .padding(.horizontal)
         
     }
