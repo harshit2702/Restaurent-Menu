@@ -15,32 +15,35 @@ struct CardView: View {
     var body: some View {
         VStack{
             ZStack{
+                // Background RoundedRectangle with a small offset for shadow effect
                 RoundedRectangle(cornerRadius: 20)
                     .frame(height: 175)
                     .offset(y: 23)
+                
+                // RoundedRectangle to represent the card's main content
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color(red: 250/255, green: 240/155, blue: 211/255))
                     .frame(height: 170)
                     .offset(y: 22)
+                
                 VStack{
+                    // Text displaying the name of the item
                     Text(name)
                         .font(.title3)
                         .fontWeight(.bold)
                         .frame(width: 140,height: 70)
                     HStack{
                         Spacer()
+                        // Text displaying the price of the item with INR symbol
                         Text("INR \(price)")
                     }
                     .font(.title2)
                     .fontWeight(.bold)
                     .offset(x:-10,y: 10)
-
-                    
-            
-                        
                 }
                 .offset(y: 45)
-
+                
+                // AsyncImage to display the item's image
                 ZStack {
                     AsyncImage(url: URL(string: link), scale: 3){image in
                         image
@@ -50,6 +53,7 @@ struct CardView: View {
                             .frame(width: 100,height: 100)
                             .offset(y: -60)
                     } placeholder: {
+                        // Placeholder image when the actual image is loading
                         ZStack{
                             Circle()
                                 .fill(.gray)

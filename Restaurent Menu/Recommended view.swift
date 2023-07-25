@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct Recommended_view: View {
-    var recommendationMetrics: String
     
+    var recommendationMetrics: String// Represents the selected nutritional category
     @State private var nutritionInfo = [NutritionalInfo]()
-    
+    @State private var sortedItemList = [item]()// Represents the list of sorted food items
 
-    enum NutritionalCategory: String {
+    enum NutritionalCategory: String {     // Enumeration to represent different nutritional categories
             case lowCalorie = "lowCalorie"
             case lowFats = "lowFats"
             case highProtein = "highProtein"
             case highFiber = "highFiber"
         }
 
-    
+    // Function to convert a string to NutritionalCategory
     func categoryFromString(_ categoryString: String) -> NutritionalCategory? {
             return NutritionalCategory(rawValue: categoryString)
         }
     
+    // Function to sort the nutritional items based on the selected category
     func sortedItems(for category: NutritionalCategory) -> [(type: Double, items: [NutritionalInfo])] {
         var keyPath: KeyPath<NutritionalInfo, Double?>!
         var comparison: (Double, Double) -> Bool
@@ -56,13 +57,10 @@ struct Recommended_view: View {
             (type: key, items: groupedItems[key]!)
         }
     }
-
-
-   @State private var sortedItemList = [item]()
     
-    
-    func populateSortedItemList(for category: NutritionalCategory) {
-        var count = 5
+    // Function to populate the sortedItemList with the top 5 food items based on the selected category
+    func populateSortedItemList(for category: NutritionalCategory) { //Link the NutritionInfo to foodItems
+        var count = 5//To save Only top 5 results
         for itemGroup in sortedItems(for: category) {
             for x in itemGroup.items {
                 if(count > 0){
@@ -88,6 +86,7 @@ struct Recommended_view: View {
         .frame(maxWidth: .infinity)
         .background(Color(red: 255/255, green: 250/255, blue: 0/255))
         .onAppear{
+            //File:- an attempt to load and decode the data from selected file is made.
             do {
                 guard let fileUrl = Bundle.main.url(forResource: "NutritionInfo", withExtension: "json") else {
                     print("File not found 1")
@@ -100,6 +99,8 @@ struct Recommended_view: View {
             } catch {
                 print("Error: \(error)")
             }
+            
+            // Populate the sortedItemList based on the selected nutritional category
             if let category = categoryFromString(recommendationMetrics) {
                     populateSortedItemList(for: category)
             }

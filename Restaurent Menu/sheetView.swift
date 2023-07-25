@@ -15,12 +15,15 @@ struct sheetView: View {
 
     var body: some View {
         ZStack {
+            //Yellow Circle
             Circle()
                 .frame(minWidth: 450, maxWidth: .infinity)
                 .foregroundColor(Color(red: 255/255, green: 250/255, blue: 0/255))
                 .offset(y: 400)
             VStack {
+                //Image section
                 ZStack {
+                    // AsyncImage or Placeholder if link is not available
                     AsyncImage(url: URL(string: selectedCard?.link ?? "" ), scale: 3){image in
                         image
                             .resizable()
@@ -42,16 +45,21 @@ struct sheetView: View {
                     }
                 }
                 Spacer(minLength: 20)
+                
+                // Title
                 Text(selectedCard!.name)
                     .font(.largeTitle)
                     .fontWeight(.bold)
                 Spacer(minLength: 20)
+                
+                // Nutrients Info Section
                 Text("Nutrients Info")
                     .font(.title2)
                     .fontWeight(.bold)
                 ScrollView {
                     VStack(alignment: .leading){
                         Group{
+                            // Nutritional Information
                             Text("Calories: \(String(format: "%.2f", nutrition?.calories ?? 0))")
                             Text("Serving Size: \(String(format: "%.2f", nutrition?.serving_size_g ?? 0) ) g")
                             Text("Total Fat: \(String(format: "%.2f", nutrition?.fat_total_g ?? 0) ) g")
@@ -68,6 +76,8 @@ struct sheetView: View {
                     .font(.title2)
                 }
             }
+            
+            // Add to Cart Button Section
             VStack{
                 Spacer()
                 HStack{
@@ -85,6 +95,7 @@ struct sheetView: View {
             .padding(.trailing,50)
         }
         .onAppear{
+            // Load Nutrition Info from JSON
             do {
                 guard let fileUrl = Bundle.main.url(forResource: "NutritionInfo", withExtension: "json") else {
                     print("File not found 1")
@@ -97,6 +108,7 @@ struct sheetView: View {
                 print("Error: \(error)")
             }
             
+            // Retrieve selectedCard's nutrition info
             self.foodName = selectedCard!.name
             let index = nutritionInfo.firstIndex(where: { item in
                 item.name == foodName.lowercased()

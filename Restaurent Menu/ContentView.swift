@@ -6,17 +6,6 @@
 //
 
 import SwiftUI
-class Order: ObservableObject{
-    @Published var name = ""
-    @Published var quantity = 0
-    @Published var price = 0
-    @Published var type = ""
-    @Published var link = ""
-    
-    var cost: Double{
-        return Double(quantity * price)
-    }
-}
 struct item: Identifiable{
     var id = UUID()
     let name: String
@@ -47,6 +36,8 @@ let items: [item] = [
 
 struct ContentView: View {
     
+    // Function to group and sort items based on their type
+
     func sortedItems() -> [(type: String, items: [item])] {
             let groupedItems = Dictionary(grouping: items) { item in
                 item.type
@@ -57,17 +48,18 @@ struct ContentView: View {
             }
         }
     
-    //@State var selectedCard: item?
     
     var body: some View {
         NavigationStack{
             ZStack {
+                // Yellow Circle Background
                     Circle()
                         .frame(minWidth: 450, maxWidth: .infinity)
                         .foregroundColor(Color(red: 255/255, green: 250/255, blue: 0/255))
                         .offset(y: -400)
+                
                 ScrollView{
-                    
+                    // Header Section
                     HStack{
                         VStack(alignment: .leading){
                             Text("         Good Food.")
@@ -77,10 +69,14 @@ struct ContentView: View {
                         .fontWeight(.bold)
                         Spacer()
                     }
+                    
+                    // Nutrition Diet Section
                     VStack (alignment: .leading){
                         Section("Nutrition Diet") {
                             HStack{
+                                // Navigation links for different nutritional categories
                                 GeometryReader{ geo in
+                                    // Low Calorie
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(.clear)
@@ -98,6 +94,8 @@ struct ContentView: View {
                                     }
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: geo.size.width / 25)
+                                    
+                                    // Low Fats
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(.clear)
@@ -114,6 +112,8 @@ struct ContentView: View {
                                     }
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: 2 * geo.size.width / 25 + geo.size.width / 5)
+                                    
+                                    // Protein-rich
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(.clear)
@@ -131,6 +131,7 @@ struct ContentView: View {
                                     .frame(width: geo.size.width / 5)
                                     .offset(x: 3 *  geo.size.width / 25 + 2 * geo.size.width / 5)
 
+                                    // Fiberous
                                     ZStack {
                                         RoundedRectangle(cornerRadius: 20)
                                             .fill(.clear)
@@ -154,6 +155,8 @@ struct ContentView: View {
                         .font(.system(size: 18, weight: .bold))
                         .padding(.horizontal,40)
                     }
+                    
+                    // Item Sections
                     VStack(alignment: .leading){
                         Spacer(minLength: 30)
                         ForEach(sortedItems(),id: \.type) { section in
@@ -184,6 +187,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarLeading){
                     VStack(alignment: .leading){
                         HStack{
+                            // Address button
                             Image(systemName: "house.fill")
                                 .foregroundColor(Color(red: 236/255, green: 205/255, blue: 109/255))
                             Text("Home")
@@ -194,6 +198,7 @@ struct ContentView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing){
+                    //Profile Button
                     Button{
                         
                     }label: {

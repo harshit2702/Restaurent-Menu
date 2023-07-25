@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct NutritionalInfo: Codable, Comparable {
-    static func < (lhs: NutritionalInfo, rhs: NutritionalInfo) -> Bool {
+struct NutritionalInfo: Codable, Comparable { //NutrionInfo file data structure
+    
+    static func < (lhs: NutritionalInfo, rhs: NutritionalInfo) -> Bool { //Funtion Overloading
         Int(lhs.calories!) <  Int(rhs.calories!)
     }
     
